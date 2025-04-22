@@ -41,7 +41,7 @@ features = np.array([feature_values])
 if st.button("Predict"):
     predicted_class = model.predict(features)[0]
     predicted_proba = model.predict_proba(features)[0]
-    st.write(f"**Predicted Class:** {predicted_class} (0: Low probility of CircS, 1: High probility of CircS)")
+    st.write(f"**Predicted Class:** {predicted_class} (0: Low risk of CircS, 1: High risk of CircS)")
     st.write(f"**Predicted Probabilities:** {predicted_proba}")
     probability = predicted_proba[predicted_class] * 100
     # 如果预测类别为1（高风险）
@@ -67,7 +67,7 @@ if st.button("Predict"):
     shap_values = explainer_shap(pd.DataFrame([feature_values], columns=feature_names))
     
     if predicted_class == 1:
-        shap.plots.force(explainer_shap.expected_value[1],shap_values[:,:,1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
+        shap.force_plot(explainer_shap.expected_value[1],shap_values[:,:,1], pd.DataFrame([feature_values], columns=feature_names), matplotlib=True)
     # 期望值（基线值）
     #解释类别 0（未患病）的 SHAP 值
     # 特征值数据
@@ -83,7 +83,7 @@ if st.button("Predict"):
     lime_explainer = LimeTabularExplainer(
         training_data=x_test.values, 
         feature_names=x_test.columns.tolist(),
-        class_names=['Good Prognosis', 'Bad Prognosis'],# Adjust class names to match your classification task
+        class_names=['Low risk of CircS', 'High risk of CircS'],# Adjust class names to match your classification task
         mode='classification'
     )
 
