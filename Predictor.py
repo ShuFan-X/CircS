@@ -9,8 +9,8 @@ from lime.lime_tabular import LimeTabularExplainer
 import xgboost
 #model = xgboost.Booster()
 #model.load_model('XGB.json')
-df2 =pd.read_csv('x_test.csv')
-x_test = df2[['AGE', 'BMI', 'WAIST', 'Hypertension', 'EDU']]
+df2 =pd.read_csv('x_train.csv')
+x_train = df2[['AGE', 'BMI', 'WAIST', 'Hypertension', 'EDU']]
 
 model = joblib.load('XGB.pkl')
 
@@ -81,8 +81,8 @@ if st.button("Predict"):
     # LIME Explanation
     st.subheader("LIME Explanation")
     lime_explainer = LimeTabularExplainer(
-        training_data=x_test.values, 
-        feature_names=x_test.columns.tolist(),
+        training_data=x_train.values, 
+        feature_names=x_train.columns.tolist(),
         class_names=['Low risk of CircS', 'High risk of CircS'],# Adjust class names to match your classification task
         mode='classification'
     )
