@@ -26,7 +26,7 @@ Height = st.number_input("Height", min_value=0, max_value=250, value=1)
 Weight = st.number_input("Weight", min_value=0, max_value=150, value=1)
 WAIST = st.selectbox("WAIST", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
 Hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
-EDU = st.selectbox("EDU", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
+EDU = st.selectbox("EDU", options=[1, 2, 3], format_func=lambda x: ("Less than High school" if x == 1 else "High school" if x == 2 else "More than High school" if x == 3 else ""))
 
 
 
