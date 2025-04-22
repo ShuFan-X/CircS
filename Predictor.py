@@ -24,9 +24,9 @@ st.sidebar.subheader("Picking up paraneters")
 AGE = st.number_input("AGE", min_value=0, max_value=120, value=1)
 Height = st.number_input("Height", min_value=0, max_value=250, value=1)
 Weight = st.number_input("Weight", min_value=0, max_value=150, value=1)
-WAIST = st.selectbox("WAIST", options=[0, 1], format_func=lambda x:"NO"if x == 1 else "YES")
-Hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x:"NO"if x == 1 else "YES")
-EDU = st.selectbox("EDU", options=[0, 1], format_func=lambda x:"NO"if x == 1 else "YES")
+WAIST = st.selectbox("WAIST", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
+Hypertension = st.selectbox("Hypertension", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
+EDU = st.selectbox("EDU", options=[0, 1], format_func=lambda x:"YES"if x == 1 else "NO")
 
 
 
